@@ -79,7 +79,7 @@ function StartRecordingQuestion(_eventId, _QuestionID)
         //Do something
         return;
     }
-    h2OnVideo.innerText = config[questionId]['text'];
+
 
     //TODO -
     // 1. Add entry
@@ -98,6 +98,7 @@ function StopRecordingQuestion(_eventId, _QuestionID)
     {
         return;
     }
+    h2OnVideo.innerText = config[questionId]['text'];
     isDisabled=true;
     video.recordRTC.stopRecording();
     uploadFromQueue();
