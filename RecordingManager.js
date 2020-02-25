@@ -332,7 +332,6 @@ var startMedia = function() {
 function uploadToKaltura(fileName, recordRTC, callback) {
     var blob = recordRTC instanceof Blob ? recordRTC : recordRTC.getBlob();
 
-    blob.setAttribute('name','mytempfile');
     console.log(blob);
 
     uploadChunk(ks,blob);
