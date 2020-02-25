@@ -96,7 +96,7 @@
 
             setKs(ks);
             const width = getMobileWidth();
-            printDebug("orientation is -"+ window.orientation + " " + getOrientation() + " x * y  is -" + getMobileWidth() + " " + getMobileHeight());
+            printDebug("orientation is -"+ window.orientation + " " + getOrientation() + " x * y  is -" + screen.availWidth + " " +  screen.availHeight);
             StartMedia(eventId,'video-element',width*0.7);
 
         }
