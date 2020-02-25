@@ -499,6 +499,8 @@ function getHTMLMediaElement(mediaElement, config) {
     mediaBox.appendChild(h2OnVideo)
     mediaBox.appendChild(debugBox)
 
+    mediaBox.appendChild(document.getElementById("start-stop-button"));
+
     mediaBox.appendChild(mediaElement);
     mediaBox.setAttribute('style',' width: '+width+'px');
 

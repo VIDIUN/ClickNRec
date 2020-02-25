@@ -40,12 +40,24 @@
         text-align: center;
         text-decoration: none;
         display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
+        font-size: 36px;
+        margin: 4px 4px;
         cursor: pointer;
-        border-radius: 8px;
-        padding: 10px 24px;
+        border-radius: 70%;
+        padding: 24px 24px;
+        opacity: 0.3;
+        vertical-align: center;
+        horiz-align: center;
+        position: fixed;
+        margin-top:40%;
+        margin-left: 40%;
+
     }
+
+
+/*    h2OnVideo.setAttribute('style', 'position: absolute;color:orange;font-size:36px;text-shadow: 1px 1px black;padding:0;margin:0;text-align: center; margin-top: 10%; display: block; border: 0;line-height:1.5;z-index:1; wordWrap: break-word');
+
+
     /*@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {*/
     /*    html {*/
     /*        transform: rotate(-90deg);*/
@@ -62,29 +74,44 @@
 
 </head>
 <body onload="loadConfig('./config.json')">
-        <div id="recording-player"></div>
+        <div id="recording-player">
         <!--button onclick="StartMedia(eventId,'video-element',320)">StartVideo</--button>
         <button onclick="EndRecording(eventId)">End Recording</button-->
-        <button class='coolbutton' onclick="increaseQuestionId();StartRecordingQuestion(eventId,questionId)">Start recording</button>
-        <button class='coolbutton' onclick="StopRecordingQuestion(eventId,questionId)">Stop recording</button>
-    </br>
-    <video id="video-element"  ></video>
+        </div>
+        <button id='start-stop-button' class='coolbutton' onclick="buttonClick()">Start</button>
+    <video id="video-element"  >
+
+
+    </video>
     </div>
     <hr style="border-top: 0;border-bottom: 1px solid rgb(189, 189, 189);margin: 4px -12px;margin-top: 8px;">
 
     <script>
         var ks='';
         var questionId = 0;
+        var buttonState='start';
         function increaseQuestionId()
         {
             questionId++;
         }
 
+        function buttonClick()
+        {
+            if(document.getElementById("start-stop-button").textContent=='Start')
+            {
+                document.getElementById("start-stop-button").textContent = 'Stop';
+                StartRecordingQuestion(eventId,questionId);
+            }
+            else
+            {
+                document.getElementById("start-stop-button").textContent = 'Start';
+                StopRecordingQuestion(eventId,questionId)
+            }
+        }
+
         function bodyOnLoad()
         {
-            const ret = screen.orientation.lock('portrait');
-            ret.then();
-            var eventId = Math.floor(Math.random() * 1000);
+           var eventId = Math.floor(Math.random() * 1000);
             var getQueryString = function ( field, url ) {
                 var href = url ? url : window.location.href;
                 var reg = new RegExp( '[?&]' + field + '=([^&#]*)', 'i' );
