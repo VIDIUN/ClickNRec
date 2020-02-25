@@ -63,9 +63,7 @@
 
     <script>
         var ks='';
-        var config='';
-        
-        var questionId = 1;
+        var questionId = 0;
         function increaseQuestionId()
         {
             questionId++;
@@ -74,13 +72,6 @@
         function bodyOnLoad()
         {
             var eventId = Math.floor(Math.random() * 1000);
-            var questionId = 1;
-
-            function increaseQuestionId()
-            {
-                questionId++;
-            }
-
             var getQueryString = function ( field, url ) {
                 var href = url ? url : window.location.href;
                 var reg = new RegExp( '[?&]' + field + '=([^&#]*)', 'i' );
@@ -89,6 +80,8 @@
             };
             ks = getQueryString('ks');
             console.log("KS is - " + ks);
+
+            setKs(ks);
             const width = getMobileWidth();
             console.log("orientation is -" + getOrientation());
             console.log("x * y  is -" + getMobileWidth() + " " + getMobileHeight());
@@ -101,7 +94,7 @@
             {
                 $.getJSON(configFileUrl, function(result){
                     console.log(result);
-                    config = result;
+                    setConfig(result);
                     bodyOnLoad();
                 });
             });

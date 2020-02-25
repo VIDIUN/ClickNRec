@@ -20,7 +20,18 @@ const chunkRecordDuration = 10000;
 var eventEnded=false;
 var videoResolution=[640,480];
 var h2OnVideo = document.createElement('h2');
+var config='';
+var ks='';
 h2OnVideo.setAttribute('style', 'position: absolute;color:orange;font-size:36px;text-shadow: 1px 1px black;padding:0;margin:0;text-align: center; margin-top: 10%; display: block; border: 0;line-height:1.5;z-index:1; wordWrap: break-word');
+
+function setKs(_ks)
+{
+    ks=_ks;
+}
+function setConfig(_config)
+{
+    config = _config;
+}
 
 function StartMedia(_eventId, videoElementID, _width)
 {
@@ -32,9 +43,9 @@ function StartMedia(_eventId, videoElementID, _width)
     {
         return;
     }
-    
-    h2OnVideo.innerHTML = 'This is a text on video!';
-    
+
+    h2OnVideo.innerText = config[questionId]['text'];
+
     video = document.getElementById(videoElementID);
     eventId = _eventId;
     width = _width;
@@ -68,6 +79,7 @@ function StartRecordingQuestion(_eventId, _QuestionID)
         //Do something
         return;
     }
+    h2OnVideo.innerText = config[questionId]['text'];
 
     //TODO -
     // 1. Add entry
