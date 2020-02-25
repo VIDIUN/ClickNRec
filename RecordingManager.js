@@ -435,10 +435,6 @@ function videoFeedBack(arg, forceNonImage) {
     }, false);
 
     recordingPlayer.poster = '';
-    var label = document.createElement('a');
-    label.innerText="dsgsdfgdsgdsgfsdfg";
-    recordingPlayer.appendChild(label);
-
 
     if(arg instanceof MediaStream) {
         recordingPlayer.srcObject = arg;
