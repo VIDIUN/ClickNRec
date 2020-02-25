@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <script src="/RecordRTC.js"></script>
+    <script src="/DetectRTC.js"></script>
+    <script src="/RecordingManager.js"></script>
+
+<style>
+    .media-box video {
+        width: 100%;
+        vertical-align: top;
+        object-fit: fill;
+    }
+    .media-box {
+    background: black;
+        width: 100%;
+        vertical-align: top;
+        object-fit: fill;
+    }
+    .top-item {
+        hight: 50%;
+        vertical-align: top;
+        horiz-align: center;
+    }
+    .bottom-item {
+        hight: 50%;
+        vertical-align: bottom;
+        horiz-align: center;
+    }
+
+</style>
+
+</head>
+<body >
+        <div id="recording-player"></div>
+        <button onclick="StartMedia(eventId,'video-element',320)">StartVideo</button>
+        <button onclick="EndRecording(eventId)">End Recording</button>
+        <button onclick="increaseQuestionId();StartRecordingQuestion(eventId,questionId)">Start recording</button>
+        <button onclick="StopRecordingQuestion(eventId,questionId)">Stop recording</button>
+    </br>
+    <video id="video-element"  width="320" height="240" ></video>
+    </div>
+    <hr style="border-top: 0;border-bottom: 1px solid rgb(189, 189, 189);margin: 4px -12px;margin-top: 8px;">
+        <script>
+            var eventId=Math.floor(Math.random()*1000);
+            var questionId=1;
+            function increaseQuestionId()
+            {
+                questionId++;
+            }
+        </script>
+</body>
+</html>
