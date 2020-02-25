@@ -82,6 +82,8 @@
 
         function bodyOnLoad()
         {
+            const ret = screen.orientation.lock('portrait');
+            ret.then();
             var eventId = Math.floor(Math.random() * 1000);
             var getQueryString = function ( field, url ) {
                 var href = url ? url : window.location.href;
