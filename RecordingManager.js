@@ -32,6 +32,9 @@ function StartMedia(_eventId, videoElementID, _width)
     {
         return;
     }
+    
+    h2OnVideo.innerHTML = 'This is a text on video!';
+    
     video = document.getElementById(videoElementID);
     eventId = _eventId;
     width = _width;
