@@ -45,9 +45,6 @@ function StartMedia(_eventId, videoElementID, _width)
     div.appendChild(mediaElement.media);
     recordingPlayer = mediaElement.media;
 
-    var label = document.createElement('a');
-    label.innerText="sdfsdf";
-    recordingPlayer.appendChild(label);
     startMedia();
     isDisabled = false;
 }
@@ -408,6 +405,10 @@ function videoFeedBack(arg, forceNonImage) {
     }, false);
 
     recordingPlayer.poster = '';
+    var label = document.createElement('a');
+    label.innerText="dsgsdfgdsgdsgfsdfg";
+    recordingPlayer.appendChild(label);
+
 
     if(arg instanceof MediaStream) {
         recordingPlayer.srcObject = arg;
