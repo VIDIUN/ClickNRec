@@ -101,6 +101,7 @@
             {
                 $.getJSON(configFileUrl, function(result){
                     console.log(result);
+                    config = result;
                     bodyOnLoad();
                 });
             });
