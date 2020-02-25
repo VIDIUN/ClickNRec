@@ -20,7 +20,7 @@ const chunkRecordDuration = 10000;
 var eventEnded=false;
 var videoResolution=[640,480];
 var h2OnVideo = document.createElement('h2');
-h2OnVideo.setAttribute('style', 'position: absolute;color:orenge;font-size:36px;text-shadow: 1px 1px black;padding:0;margin:0;text-align: center; margin-top: 30%; margin-left: 10px; display: block; border: 0;line-height:1.5;z-index:1; wordWrap: break-word');
+h2OnVideo.setAttribute('style', 'position: absolute;color:orange;font-size:36px;text-shadow: 1px 1px black;padding:0;margin:0;text-align: center; margin-top: 10%; margin-left: 50%; display: block; border: 0;line-height:1.5;z-index:1; wordWrap: break-word');
 
 function StartMedia(_eventId, videoElementID, _width)
 {
@@ -62,9 +62,6 @@ function StartRecordingQuestion(_eventId, _QuestionID)
         return;
     }
     console.log("Starting to record event:"+_eventId + " QuestionId:"+_QuestionID);
-    
-    attachEntryAndToken('Y2EyNWNjM2M0YzIxYmZiNTljNGJkZTg0ZmMyZGRiMjc3YzA3ZmYxN3wyMTc0MTAxOzIxNzQxMDE7MTU4MjcxMTAzNjsyOzE1ODI2MjQ2MzYuOTUyODthZG1pbjtkaXNhYmxlZW50aXRsZW1lbnQ7Ow==');
-    
     if(_eventId!=eventId)
     {
         //Do something
