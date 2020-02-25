@@ -1,4 +1,4 @@
-var gPosition = "";
+//var gPosition = "";
 
 function getLocation() {
   if (navigator.geolocation) {
