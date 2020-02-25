@@ -4,13 +4,16 @@ var resumeAt=0;
 
 function uploadChunk(ks ,fileData, finalChunk=0)
 {
-
+  let fileDataString='';
+  let resumeAtString='';
   if(fileData.size)
   {
     resumeAt += fileData.size;
+    fileDataString = '&fileData=' + fileData;
+    resumeAtString = '&resumeAt=' + resumeAt;
   }
   console.log('uploadChunk function started');
-  var url = 'https://www.kaltura.com/api_v3/service/uploadtoken/action/upload?ks=' + ks + '&uploadTokenId=' + token + '&fileData=' + fileData + 'finalChunk=' + finalChunk + '&resume &resumeAt=' +  resumeAt;
+  var url = 'https://www.kaltura.com/api_v3/service/uploadtoken/action/upload?ks=' + ks + '&uploadTokenId=' + token + fileDataString + 'finalChunk=' + finalChunk + '&resume ' +  resumeAtString;
   fetch(url, {
     method: 'post',
   }).then(function(response) {
