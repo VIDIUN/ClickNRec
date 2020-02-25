@@ -63,6 +63,7 @@
 
     <script>
         var ks='';
+        var config='';
         
         var questionId = 1;
         function increaseQuestionId()
@@ -91,7 +92,7 @@
             const width = getMobileWidth();
             console.log("orientation is -" + getOrientation());
             console.log("x * y  is -" + getMobileWidth() + " " + getMobileHeight());
-
+            config = ConfigReader('./config.json');
             StartMedia(eventId,'video-element',width*0.7);
         }
 
