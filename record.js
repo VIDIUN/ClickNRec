@@ -59,5 +59,6 @@ function createToken(ks, entryId)
         console.log(json);
         token = json['id'];
         addContent(ks, entryId, token)
+        console.log("Added entry ID "+entryId +"token ID " + token);
       });
 }
