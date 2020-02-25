@@ -44,6 +44,10 @@ function StartMedia(_eventId, videoElementID, _width)
     mediaElement.media.muted = false;
     div.appendChild(mediaElement.media);
     recordingPlayer = mediaElement.media;
+
+    var label = document.createElement('a');
+    label.innerText="sdfsdf";
+    recordingPlayer.appendChild(label);
     startMedia();
     isDisabled = false;
 }
