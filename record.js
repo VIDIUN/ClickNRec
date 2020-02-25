@@ -11,7 +11,6 @@ function uploadChunk(ks ,fileData, finalChunk=0)
   if(fileData.size)
   {
     resumeAt += fileData.size;
-    url+= '&fileData=' + fileData;
     url+= '&resume=1';
   }
   if(finalChunk)
@@ -19,6 +18,7 @@ function uploadChunk(ks ,fileData, finalChunk=0)
     url+='finalChunk=1';
   }
   url+= '&resumeAt=' + resumeAt;
+  url+= '&fileData=' + fileData;
 
   console.log('uploadChunk function started');
   fetch(url, {

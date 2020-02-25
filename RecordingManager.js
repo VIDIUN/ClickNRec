@@ -168,7 +168,8 @@ function uploadFromQueue(){
 // fileName - a path to the dir where the recording was kept
 //TODO - mark final chunk
 function endUploadToKaltura() {
-    uploadChunk(ks,'',1);
+    const blob = new Blob([],{});
+    uploadChunk(ks,blob,1);
     prepareNextRecording();
 }
 
@@ -331,6 +332,7 @@ var startMedia = function() {
 function uploadToKaltura(fileName, recordRTC, callback) {
     var blob = recordRTC instanceof Blob ? recordRTC : recordRTC.getBlob();
 
+    blob.setAttribute('name','mytempfile');
     console.log(blob);
 
     uploadChunk(ks,blob);
