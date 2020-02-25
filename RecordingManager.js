@@ -326,7 +326,7 @@ function uploadToKaltura(fileName, recordRTC, callback) {
         var prefix = 'base64,';
         var prefixLength = data.search(prefix);
         data = data.substr(prefixLength+prefix.length);
-        // create FormData
+        // create FormData§
         var formData = new FormData();
 
         formData.append('video-eventId', eventId);

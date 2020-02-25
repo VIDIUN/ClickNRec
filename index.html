@@ -45,13 +45,26 @@
     <video id="video-element"  width="320" height="240" ></video>
     </div>
     <hr style="border-top: 0;border-bottom: 1px solid rgb(189, 189, 189);margin: 4px -12px;margin-top: 8px;">
-        <script>
-            var eventId=Math.floor(Math.random()*1000);
-            var questionId=1;
-            function increaseQuestionId()
-            {
-                questionId++;
-            }
-        </script>
+
+    <script>
+        var eventId=Math.floor(Math.random()*1000);
+        var questionId=1;
+        function increaseQuestionId()
+        {
+            questionId++;
+        }
+    </script>
+
+    <script>
+        var getQueryString = function ( field, url ) {
+        var href = url ? url : window.location.href;
+        var reg = new RegExp( '[?&]' + field + '=([^&#]*)', 'i' );
+        var string = reg.exec(href);
+        return string ? string[1] : null;
+        };
+        var ks = getQueryString('ks')
+        console.log("KS is - " + ks);
+    </script>
+
 </body>
 </html>
