@@ -389,7 +389,7 @@ function videoFeedBack(arg, forceNonImage) {
 
     var parentNode = recordingPlayer.parentNode;
     parentNode.removeChild(recordingPlayer);
-    parentNode.innerHTML = '';
+    parentNode.innerHTML = 'gsdfgsdfg';
 
     var elem = 'video';
     recordingPlayer = document.createElement(elem);
