@@ -1,7 +1,12 @@
-function uploadChunk(ks, token, fileData, finalChunk)
+var entryId='';
+var token;
+var resumeAt=0;
+
+function uploadChunk(ks ,fileData, finalChunk=0)
 {
+  resumeAt += fileData.size;
   console.log('uploadChunk function started');
-  var url = 'https://www.kaltura.com/api_v3/service/uploadtoken/action/upload?ks=' + ks + '&uploadTokenId=' + token + '&fileData=' + fileData + 'finalChunk=' + finalChunk + '&resume=1&resumeAt=-1';
+  var url = 'https://www.kaltura.com/api_v3/service/uploadtoken/action/upload?ks=' + ks + '&uploadTokenId=' + token + '&fileData=' + fileData + 'finalChunk=' + finalChunk + '&resume &resumeAt=' +  resumeAt;
   fetch(url, {
     method: 'post',
   }).then(function(response) {
@@ -11,6 +16,7 @@ function uploadChunk(ks, token, fileData, finalChunk)
 
 function attachEntryAndToken(ks)
 {
+  resumeAt=0;
   console.log('addEntry started');
   var url = 'https://www.kaltura.com/api_v3/service/baseentry/action/add?format=1&type=1&entry%3AobjectType=KalturaBaseEntry&entry%3A&ks=' + ks;
   fetch(url, {
@@ -20,7 +26,7 @@ function attachEntryAndToken(ks)
   })
   .then(function(json) {
     console.log(json);
-    var entryId = json['id'];
+    entryId = json['id'];
     createToken(ks, entryId);
 
   });
@@ -51,7 +57,7 @@ function createToken(ks, entryId)
   })
       .then(function(json) {
         console.log(json);
-        var token = json['id'];
+        token = json['id'];
         addContent(ks, entryId, token)
       });
 }

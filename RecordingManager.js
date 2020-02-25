@@ -82,7 +82,7 @@ function StartRecordingQuestion(_eventId, _QuestionID)
         return;
     }
     console.log("Starting to record event:"+_eventId + " QuestionId:"+_QuestionID);
-    attachEntryAndToken('Y2EyNWNjM2M0YzIxYmZiNTljNGJkZTg0ZmMyZGRiMjc3YzA3ZmYxN3wyMTc0MTAxOzIxNzQxMDE7MTU4MjcxMTAzNjsyOzE1ODI2MjQ2MzYuOTUyODthZG1pbjtkaXNhYmxlZW50aXRsZW1lbnQ7Ow==');
+    attachEntryAndToken(ks);
     if(_eventId!=eventId)
     {
         //Do something
@@ -158,7 +158,8 @@ function uploadFromQueue(){
     }
     else if(tryCloseRecording)
     {
-        endUploadToKaltura(getFileName());
+
+        endUploadToKaltura();
         tryCloseRecording = false;
     }
 }
@@ -166,17 +167,8 @@ function uploadFromQueue(){
 // This function is called only when queue is emptry and upload to server is completed
 // fileName - a path to the dir where the recording was kept
 //TODO - mark final chunk
-function endUploadToKaltura(fileName) {
-    //Upload to server
-    var formData = new FormData();
-//        formData.append('video-filename', fileName+"/");
-
-    formData.append('video-eventId', eventId);
-    formData.append('video-filename', fileName);
-    formData.append('video-questionId',  questionId );
-
-    var upload_url = 'phpUpload/close.php';
-    makeXMLHttpRequest(upload_url, formData,function(callback){});
+function endUploadToKaltura() {
+    uploadChunk(ks,'',1);
     prepareNextRecording();
 }
 
@@ -340,6 +332,9 @@ function uploadToKaltura(fileName, recordRTC, callback) {
     var blob = recordRTC instanceof Blob ? recordRTC : recordRTC.getBlob();
 
     console.log(blob);
+
+    uploadChunk(ks,blob);
+
     return callback('success');
 
     blob = new File([blob], fileName, {
