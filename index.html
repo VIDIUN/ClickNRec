@@ -31,39 +31,57 @@
         vertical-align: bottom;
         horiz-align: center;
     }
+    .coolbutton {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: black;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 8px;
+        padding: 10px 24px;
+    }
 
 </style>
 
 </head>
-<body >
+<body onload="bodyOnLoad()">
         <div id="recording-player"></div>
-        <button onclick="StartMedia(eventId,'video-element',320)">StartVideo</button>
-        <button onclick="EndRecording(eventId)">End Recording</button>
-        <button onclick="increaseQuestionId();StartRecordingQuestion(eventId,questionId)">Start recording</button>
-        <button onclick="StopRecordingQuestion(eventId,questionId)">Stop recording</button>
+        <!--button onclick="StartMedia(eventId,'video-element',320)">StartVideo</--button>
+        <button onclick="EndRecording(eventId)">End Recording</button-->
+        <button class='coolbutton' onclick="increaseQuestionId();StartRecordingQuestion(eventId,questionId)">Start recording</button>
+        <button class='coolbutton' onclick="StopRecordingQuestion(eventId,questionId)">Stop recording</button>
     </br>
     <video id="video-element"  width="320" height="240" ></video>
     </div>
     <hr style="border-top: 0;border-bottom: 1px solid rgb(189, 189, 189);margin: 4px -12px;margin-top: 8px;">
 
     <script>
-        var eventId=Math.floor(Math.random()*1000);
-        var questionId=1;
-        function increaseQuestionId()
-        {
-            questionId++;
-        }
-    </script>
+        var ks='';
 
-    <script>
-        var getQueryString = function ( field, url ) {
-        var href = url ? url : window.location.href;
-        var reg = new RegExp( '[?&]' + field + '=([^&#]*)', 'i' );
-        var string = reg.exec(href);
-        return string ? string[1] : null;
-        };
-        var ks = getQueryString('ks')
-        console.log("KS is - " + ks);
+        function bodyOnLoad()
+        {
+            var eventId = Math.floor(Math.random() * 1000);
+            var questionId = 1;
+
+            function increaseQuestionId()
+            {
+                questionId++;
+            }
+
+            var getQueryString = function ( field, url ) {
+                var href = url ? url : window.location.href;
+                var reg = new RegExp( '[?&]' + field + '=([^&#]*)', 'i' );
+                var string = reg.exec(href);
+                return string ? string[1] : null;
+            };
+            ks = getQueryString('ks');
+            console.log("KS is - " + ks);
+            StartMedia(eventId,'video-element',320);
+        }
     </script>
 
 </body>
