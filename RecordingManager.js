@@ -20,9 +20,16 @@ const chunkRecordDuration = 10000;
 var eventEnded=false;
 var videoResolution=[640,480];
 var h2OnVideo = document.createElement('h2');
+var debugBox = document.createElement('p');
 var config='';
 var ks='';
 h2OnVideo.setAttribute('style', 'position: absolute;color:orange;font-size:36px;text-shadow: 1px 1px black;padding:0;margin:0;text-align: center; margin-top: 10%; display: block; border: 0;line-height:1.5;z-index:1; wordWrap: break-word');
+debugBox.setAttribute('style','position:fixed;color:black;font-size:12px; vertical-align: bottom; horizontal-align: right');
+
+function printDebug(msg)
+{
+  debugBox.innerText=msg;
+}
 
 function setKs(_ks)
 {
@@ -45,6 +52,8 @@ function StartMedia(_eventId, videoElementID, _width)
     }
 
     h2OnVideo.innerText = config[questionId]['text'];
+    h2OnVideo.style.color = config[questionId]['color'];
+
 
     video = document.getElementById(videoElementID);
     eventId = _eventId;
@@ -99,6 +108,7 @@ function StopRecordingQuestion(_eventId, _QuestionID)
         return;
     }
     h2OnVideo.innerText = config[questionId]['text'];
+    h2OnVideo.style.color = config[questionId]['color'];
     isDisabled=true;
     video.recordRTC.stopRecording();
     uploadFromQueue();
@@ -493,6 +503,7 @@ function getHTMLMediaElement(mediaElement, config) {
     mediaElementContainer.appendChild(mediaBox);
     
     mediaBox.appendChild(h2OnVideo)
+    mediaBox.appendChild(debugBox)
 
     mediaBox.appendChild(mediaElement);
     mediaBox.setAttribute('style',' width: '+width+'px');
