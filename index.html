@@ -9,7 +9,7 @@
     <script src="./DetectRTC.js"></script>
     <script src="./RecordingManager.js"></script>
     <script src="./record.js"></script>
-    <script> src ="./ConfigReader.js"</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <style>
     .media-box video {
@@ -50,7 +50,7 @@
 </style>
 
 </head>
-<body onload="bodyOnLoad()">
+<body onload="loadConfig('./config.json')">
         <div id="recording-player"></div>
         <!--button onclick="StartMedia(eventId,'video-element',320)">StartVideo</--button>
         <button onclick="EndRecording(eventId)">End Recording</button-->
@@ -92,9 +92,21 @@
             const width = getMobileWidth();
             console.log("orientation is -" + getOrientation());
             console.log("x * y  is -" + getMobileWidth() + " " + getMobileHeight());
-            config = ConfigReader('./config.json');
             StartMedia(eventId,'video-element',width*0.7);
+
         }
+
+        function loadConfig(configFileUrl) {
+            $(document).ready(function()
+            {
+                $.getJSON(configFileUrl, function(result){
+                    console.log(result);
+                    bodyOnLoad();
+                });
+            });
+
+        }
+
 
         function getOrientation(){
             if(window.orientation)
