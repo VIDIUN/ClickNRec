@@ -80,8 +80,22 @@
             };
             ks = getQueryString('ks');
             console.log("KS is - " + ks);
-            StartMedia(eventId,'video-element',320);
+            const width = getMobileWidth();
+            StartMedia(eventId,'video-element',width);
         }
+
+        function getOrientation(){
+            if(window.orientation)
+                return Math.abs(window.orientation) - 90 == 0 ? "landscape" : "portrait";
+            return "landscape";
+        };
+        function getMobileWidth(){
+            return getOrientation() == "landscape" ? screen.availHeight : screen.availWidth;
+        };
+        function getMobileHeight(){
+            return getOrientation() == "landscape" ? screen.availWidth : screen.availHeight;
+        };
+
     </script>
 
 </body>
