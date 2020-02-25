@@ -311,6 +311,9 @@ function uploadToKaltura(fileName, recordRTC, callback) {
         type: mimeType
     });
 
+    console.log(blob);
+    return callback('success');
+
     var reader = new FileReader();
     reader.readAsDataURL(blob);
     reader.onloadend = function() {
