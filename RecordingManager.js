@@ -24,7 +24,7 @@ var debugBox = document.createElement('p');
 var config='';
 var ks='';
 h2OnVideo.setAttribute('style', 'position: absolute;color:orange;font-size:36px;text-shadow: 1px 1px black;padding:0;margin:0;text-align: center; margin-top: 10%; display: block; border: 0;line-height:1.5;z-index:1; wordWrap: break-word');
-debugBox.setAttribute('style','position:fixed;color:black;font-size:12px; vertical-align: bottom; horizontal-align: right');
+debugBox.setAttribute('style','position:fixed;color:black;font-size:18px; vertical-align: bottom; horizontal-align: right');
 
 function printDebug(msg)
 {
