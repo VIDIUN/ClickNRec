@@ -122,7 +122,7 @@
             return "landscape";
         };
         function getMobileWidth(){
-            return getOrientation() == "landscape" ? screen.availWidth : screen.availHeight;
+            return getOrientation() == "portrait" ? screen.availWidth : screen.availHeight;
         };
         function getMobileHeight(){
             return getOrientation() == "landscape" ? screen.availHeight : screen.availWidth;
