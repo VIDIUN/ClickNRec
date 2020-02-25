@@ -4,7 +4,11 @@ var resumeAt=0;
 
 function uploadChunk(ks ,fileData, finalChunk=0)
 {
-  resumeAt += fileData.size;
+
+  if(fileData.size)
+  {
+    resumeAt += fileData.size;
+  }
   console.log('uploadChunk function started');
   var url = 'https://www.kaltura.com/api_v3/service/uploadtoken/action/upload?ks=' + ks + '&uploadTokenId=' + token + '&fileData=' + fileData + 'finalChunk=' + finalChunk + '&resume &resumeAt=' +  resumeAt;
   fetch(url, {
