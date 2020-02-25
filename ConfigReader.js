@@ -1,14 +1,10 @@
-class ConfigReader{
-$.getJSON('config.json', function (json) {
-var array = [];
-for (var key in json) {
-    if (json.hasOwnProperty(key)) {
-        var item = json[key];
-        array.push({
-            item
-        });            
-    }
-}
-console.log(array);
-});
+class ConfigReader
+{
+  var Server = require('mongodb').Server;
+  var MongoDB = require('mongodb').Db;
+  var CONFIG = require('./config.json');
+
+  var obj = JSON.parse(CONFIG);
+
+  console.log("from config json" + obj);
 }
