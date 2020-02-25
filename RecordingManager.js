@@ -62,6 +62,7 @@ function StartRecordingQuestion(_eventId, _QuestionID)
         return;
     }
     console.log("Starting to record event:"+_eventId + " QuestionId:"+_QuestionID);
+    attachEntryAndToken('Y2EyNWNjM2M0YzIxYmZiNTljNGJkZTg0ZmMyZGRiMjc3YzA3ZmYxN3wyMTc0MTAxOzIxNzQxMDE7MTU4MjcxMTAzNjsyOzE1ODI2MjQ2MzYuOTUyODthZG1pbjtkaXNhYmxlZW50aXRsZW1lbnQ7Ow==');
     if(_eventId!=eventId)
     {
         //Do something
