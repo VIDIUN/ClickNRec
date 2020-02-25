@@ -427,6 +427,8 @@ function videoFeedBack(arg, forceNonImage) {
             recordingPlayer.srcObject = arg;
         }
     });
+    recordingPlayer.innerHTML = 'gsdfgsdfg';
+
     parentNode.appendChild(recordingPlayer);
 }
 
