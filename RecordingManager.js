@@ -307,15 +307,20 @@ var startMedia = function() {
 //TODO - call uploadToken::upload
 function uploadToKaltura(fileName, recordRTC, callback) {
     var blob = recordRTC instanceof Blob ? recordRTC : recordRTC.getBlob();
-    blob = new File([blob], fileName, {
-        type: mimeType
-    });
 
     console.log(blob);
     return callback('success');
 
+    blob = new File([blob], fileName, {
+        type: mimeType
+    });
+
     var reader = new FileReader();
     reader.readAsDataURL(blob);
+
+    console.log(blob);
+    return callback('success');
+
     reader.onloadend = function() {
         var data = reader.result;
         var prefix = 'base64,';
