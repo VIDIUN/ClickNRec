@@ -81,6 +81,9 @@
             ks = getQueryString('ks');
             console.log("KS is - " + ks);
             const width = getMobileWidth();
+            console.log("orientation is -" + getOrientation());
+            console.log("x * y  is -" + getMobileWidth() + " " + getMobileHeight());
+
             StartMedia(eventId,'video-element',width);
         }
 
@@ -90,10 +93,10 @@
             return "landscape";
         };
         function getMobileWidth(){
-            return getOrientation() == "landscape" ? screen.availHeight : screen.availWidth;
+            return getOrientation() == "landscape" ? screen.availWidth : screen.availHeight;
         };
         function getMobileHeight(){
-            return getOrientation() == "landscape" ? screen.availWidth : screen.availHeight;
+            return getOrientation() == "landscape" ? screen.availHeight : screen.availWidth;
         };
 
     </script>
