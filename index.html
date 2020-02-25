@@ -115,8 +115,10 @@
 
 
         function getOrientation(){
-            if(window.orientation)
-                return Math.abs(window.orientation) - 90 == 0 ? "landscape" : "portrait";
+            if(window.orientation==0)
+            {
+                return "portrait";
+            }
             return "landscape";
         };
         function getMobileWidth(){
