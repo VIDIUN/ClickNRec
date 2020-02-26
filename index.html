@@ -130,18 +130,22 @@
             {
                 var camera = config[questionId]['camera'];
                 var cameraId;
-		var cameraIndex=0;
+		        var cameraIndex=0;
 		    
-                if(camera=='front')
+                if(camera=='front' || cameras.length == 1)
                 {
-                    cameraIndex=0;
+                    cameraId =  cameras[0];
                 }
-                else if (camera=='back' && cameras.length>1 )
+                else if (camera=='back')
                 {
-                    cameraIndex=1;
+                    cameraId =  cameras[1];
+                }
+                else
+                {
+                    cameraId = null;
                 }
 		
-		cameraId =  cameras[cameraIndex];
+		        cameraId =  cameras[cameraIndex];
                 document.getElementById("start-stop-button").textContent = 'Stop';
 		        document.getElementById("start-stop-button").style.backgroundColor = '#FF0000';
                 StartRecordingQuestion(eventId,questionId,cameraId);
@@ -149,7 +153,7 @@
             else if (document.getElementById("start-stop-button").textContent=='Stop')
             {
                 document.getElementById("start-stop-button").textContent = 'Start';
-		document.getElementById("start-stop-button").style.backgroundColor = '#4CAF50';
+		        document.getElementById("start-stop-button").style.backgroundColor = '#4CAF50';
                 StopRecordingQuestion(eventId,questionId);
                 questionId++;
                 if(questionId>config.length)
