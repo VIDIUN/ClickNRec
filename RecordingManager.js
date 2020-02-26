@@ -23,6 +23,7 @@ var h2OnVideo = document.createElement('h2');
 var debugBox = document.createElement('p');
 var config='';
 var ks='';
+var button;
 h2OnVideo.setAttribute('style', 'position: absolute;color:orange;font-size:24px;opacity:0.5;font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;text-shadow: 1px 1px black;padding:0;margin:0;text-align: center; margin-top: 10%; display: block; border: 0;line-height:1.5;z-index:1; wordWrap: break-word');
 debugBox.setAttribute('style','position:fixed;color:black;font-size:18px; vertical-align: bottom; horizontal-align: right');
 
@@ -50,6 +51,8 @@ function StartMedia(_eventId, videoElementID, _width)
     {
         return;
     }
+
+    button = document.getElementById("start-stop-button");
 
     h2OnVideo.innerText = config[questionId]['text'];
     h2OnVideo.style.color = config[questionId]['color'];
