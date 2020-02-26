@@ -248,8 +248,8 @@ var startMedia = function() {
             // to sync audio/video playbacks in browser!
             videoRecorder.initRecorder(function() {
                 audioRecorder.initRecorder(function() {
-                    audioRecorder.startRecording();
-                    videoRecorder.startRecording();
+                /*    audioRecorder.startRecording();
+                    videoRecorder.startRecording();*/
                 });
             });
             video.recordRTC.push(audioRecorder, videoRecorder);
