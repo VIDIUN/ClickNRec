@@ -109,8 +109,8 @@ function StopRecordingQuestion(_eventId, _QuestionID)
     }
     h2OnVideo.innerText = config[questionId]['text'];
     h2OnVideo.style.color = config[questionId]['color'];
-    isDisabled=true;
     tryCloseRecording = true;
+    video.recordRTC.stopRecording();
     uploadFromQueue();
 
 }
@@ -148,7 +148,7 @@ function uploadFromQueue(){
         if(uploadQueue.length==1 && tryCloseRecording==true)
         {
             finalChunk=1;
-            video.recordRTC.stopRecording();
+
         }
 
         uploadToKaltura(element[0], element[1], finalChunk,function (progress) {
