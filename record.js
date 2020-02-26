@@ -14,7 +14,7 @@ function uploadChunk(ks ,fileData, finalChunk=0)
   }
   if(finalChunk)
   {
-    url+='finalChunk=1';
+    url+='&finalChunk=1';
   }
   url+= '&resumeAt=' + resumeAt;
 
