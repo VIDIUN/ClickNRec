@@ -111,8 +111,9 @@ function StopRecordingQuestion(_eventId, _QuestionID)
     h2OnVideo.style.color = config[questionId]['color'];
     isDisabled=true;
     video.recordRTC.stopRecording();
-    uploadFromQueue();
     tryCloseRecording = true;
+    uploadFromQueue();
+
 }
 
 function EndRecording(InterviewID)
@@ -141,7 +142,16 @@ function uploadFromQueue(){
         }
         var element = uploadQueue[0];
 
-        uploadToKaltura(element[0], element[1], function (progress) {
+        if(uploadQueue.length==1 && tryCloseRecording==1)
+        {
+            finalChunk=1;
+        }
+        else
+        {
+            finalChunk=0;
+        }
+
+        uploadToKaltura(element[0], element[1], finalChunk,function (progress) {
             var thisElement = uploadQueue[0];
             if (progress === 'success') {
                 uploadQueue.shift();
@@ -155,12 +165,6 @@ function uploadFromQueue(){
                 console.log('Upload state - ' + progress);
             }
         });
-    }
-    else if(tryCloseRecording)
-    {
-
-        endUploadToKaltura();
-        tryCloseRecording = false;
     }
 }
 
@@ -329,12 +333,12 @@ var startMedia = function() {
 // recordRTC - the content of the file
 
 //TODO - call uploadToken::upload
-function uploadToKaltura(fileName, recordRTC, callback) {
+function uploadToKaltura(fileName, recordRTC, finalChunk=0 ,callback) {
     var blob = recordRTC instanceof Blob ? recordRTC : recordRTC.getBlob();
 
     console.log(blob);
 
-    uploadChunk(ks,blob);
+    uploadChunk(ks,blob,finalChunk);
 
     return callback('success');
 
