@@ -110,7 +110,6 @@ function StopRecordingQuestion(_eventId, _QuestionID)
     h2OnVideo.innerText = config[questionId]['text'];
     h2OnVideo.style.color = config[questionId]['color'];
     isDisabled=true;
-    video.recordRTC.stopRecording();
     tryCloseRecording = true;
     uploadFromQueue();
 
@@ -146,9 +145,10 @@ function uploadFromQueue(){
         var element = uploadQueue[0];
 
         var finalChunk=0;
-        if(uploadQueue.length==1 && tryCloseRecording)
+        if(uploadQueue.length==1 && tryCloseRecording==true)
         {
             finalChunk=1;
+            video.recordRTC.stopRecording();
         }
 
         uploadToKaltura(element[0], element[1], finalChunk,function (progress) {
@@ -341,34 +341,6 @@ function uploadToKaltura(fileName, recordRTC, finalChunk=0 ,callback) {
     uploadChunk(ks,blob,finalChunk);
 
     return callback('success');
-
-    blob = new File([blob], fileName, {
-        type: mimeType
-    });
-
-    var reader = new FileReader();
-    reader.readAsDataURL(blob);
-
-    console.log(blob);
-    return callback('success');
-
-    reader.onloadend = function() {
-        var data = reader.result;
-        var prefix = 'base64,';
-        var prefixLength = data.search(prefix);
-        data = data.substr(prefixLength+prefix.length);
-        // create FormData§
-        var formData = new FormData();
-
-        formData.append('video-eventId', eventId);
-        formData.append('video-filename', fileName);
-        formData.append('video-questionId',  questionId );
-        formData.append('video-data', data);
-        var upload_url = 'phpUpload/save.php';
-        makeXMLHttpRequest(upload_url, formData, function(progress) {
-            callback(progress);
-        });
-    }
   }
 
 //This function is called only after the last record has full completed
