@@ -127,16 +127,21 @@
         {
             if(document.getElementById("start-stop-button").textContent=='Start')
             {
+                var camera = config[questionId]['camera'];
                 document.getElementById("start-stop-button").textContent = 'Stop';
 		document.getElementById("start-stop-button").style.backgroundColor = '#FF0000';
-                StartRecordingQuestion(eventId,questionId);
+                StartRecordingQuestion(eventId,questionId,camera);
             }
-            else
+            else if (document.getElementById("start-stop-button").textContent=='Stop')
             {
                 document.getElementById("start-stop-button").textContent = 'Start';
 		document.getElementById("start-stop-button").style.backgroundColor = '#4CAF50';
                 StopRecordingQuestion(eventId,questionId);
-                questionId++;            
+                questionId++;
+                if(questionId>config.length)
+                {
+                    document.getElementById("start-stop-button").textContent = 'Finished';
+                }
             }
         }
 

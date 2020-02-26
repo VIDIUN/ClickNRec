@@ -24,6 +24,7 @@ var debugBox = document.createElement('p');
 var config='';
 var ks='';
 var button;
+var facingMode;
 h2OnVideo.setAttribute('style', 'position: absolute;color:orange;font-size:24px;opacity:0.5;font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;text-shadow: 1px 1px black;padding:0;margin:0;text-align: center; margin-top: 10%; display: block; border: 0;line-height:1.5;z-index:1; wordWrap: break-word');
 debugBox.setAttribute('style','position:fixed;color:black;font-size:18px; vertical-align: bottom; horizontal-align: right');
 
@@ -41,7 +42,7 @@ function setConfig(_config)
     config = _config;
 }
 
-function StartMedia(_eventId, videoElementID, _width)
+function StartMedia(_eventId, videoElementID, _width, facingMode)
 {
     if(eventEnded)
     {
@@ -78,12 +79,14 @@ function StartMedia(_eventId, videoElementID, _width)
     isDisabled = false;
 }
 
-function StartRecordingQuestion(_eventId, _QuestionID)
+function StartRecordingQuestion(_eventId, _QuestionID, camera)
 {
     if(eventEnded)
     {
         return;
     }
+
+
     console.log("Starting to record event:"+_eventId + " QuestionId:"+_QuestionID);
     attachEntryAndToken(ks);
     if(_eventId!=eventId)
@@ -91,6 +94,18 @@ function StartRecordingQuestion(_eventId, _QuestionID)
         //Do something
         return;
     }
+
+    if(camera=='front')
+    {
+        facingMode='user';
+    }
+    else if (camera == 'back')
+    {
+        facingMode = 'environment';
+    }
+    EndRecording();
+    StartMedia();
+
 
 
     //TODO -
@@ -287,11 +302,11 @@ var startMedia = function() {
 
     function captureAudioPlusVideo(config) {
         var res= getVideoResolutions();
-        var videoObject = { width: { exact : res[0]} , height :{exact : res[1]}, facingMode: 'user'};
+        var videoObject = { width: { exact : res[0]} , height :{exact : res[1]}, facingMode: facingMode};
 
         var constraints = {
             video: {
-                facingMode: 'user'
+                facingMode: facingMode
             }
         }
 
