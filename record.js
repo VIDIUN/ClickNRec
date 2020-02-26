@@ -31,7 +31,7 @@ function attachEntryAndToken(ks)
 {
   resumeAt=0;
   console.log('addEntry started');
-  var url = 'https://www.kaltura.com/api_v3/service/baseentry/action/add?format=1&type=1&entry%3AobjectType=KalturaBaseEntry&entry%3A&ks=' + ks;
+  var url = 'https://www.kaltura.com/api_v3/service/baseentry/action/add?format=1&type=1&entry%3AobjectType=KalturaMediaEntry&entry%3AmediaType=1&entry%3Adescription=bla&entry%3Atags=accident&entry%3Aname=car_accident&ks=' + ks;
   fetch(url, {
     method: 'post',
   }).then(function(response) {
