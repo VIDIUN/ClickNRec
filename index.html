@@ -118,7 +118,7 @@
 
     <script>
 	    	
-	getLocation();
+	    getLocation();
     	getDevicesInfo();
         var ks='';
         var questionId = 0;
@@ -164,11 +164,28 @@
             {
                 $.getJSON(configFileUrl, function(result){
                     console.log(result);
+                    getCamera();
                     setConfig(result);
                     bodyOnLoad();
                 });
             });
 
+        }
+
+        function getCamera() {
+            navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(function(err)
+            {console.log(err);});
+            function gotDevices(deviceInfos) {
+
+                for (let i = 0; i !== deviceInfos.length; ++i) {
+                    const deviceInfo = deviceInfos[i];
+
+                    //option.value = deviceInfo.deviceId;
+                    if (deviceInfo.kind === 'videoinput') {
+                        console.log('camera : ' + deviceInfo.label)
+                    }
+                }
+            }
         }
 
 
