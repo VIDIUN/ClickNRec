@@ -297,8 +297,8 @@ var startMedia = function() {
 
         var constraints = {
             video: {
-                facingMode: 'user',
-                deviceId : {exact : facingMode}
+              //  facingMode: 'user',
+                deviceId : facingMode
             }
         }
 
