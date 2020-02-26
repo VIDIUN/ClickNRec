@@ -9,7 +9,7 @@ function uploadChunk(ks ,fileData, finalChunk=0)
   var url = 'https://www.kaltura.com/api_v3/service/uploadtoken/action/upload?ks=' + ks + '&uploadTokenId=' + token;
   if(fileData.size)
   {
-    resumeAt += fileData.size;
+    
     url+= '&resume=1';
   }
   if(finalChunk)
@@ -24,6 +24,7 @@ function uploadChunk(ks ,fileData, finalChunk=0)
     body: formData
   }).then(function(response) {
     console.log('uploadChunk function ended', response);
+    resumeAt += fileData.size;    
     return response.json()});
 }
 
