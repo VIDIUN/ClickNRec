@@ -289,7 +289,14 @@ var startMedia = function() {
         var res= getVideoResolutions();
         var videoObject = { width: { exact : res[0]} , height :{exact : res[1]}, facingMode: 'user'};
 
-        captureUserMedia({video: videoObject , audio: true}, function(audioVideoStream) {
+        var constraints = {
+            audio: true,
+            video: {
+                facingMode: 'user'
+            }
+        }
+
+        captureUserMedia(constraints, function(audioVideoStream) {
             config.onMediaCaptured(audioVideoStream);
 
             if(audioVideoStream instanceof Array) {
