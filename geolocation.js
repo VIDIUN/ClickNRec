@@ -1,4 +1,4 @@
-
+var address = '';
 
 function getLocation() {
   if (navigator.geolocation) {
@@ -19,7 +19,7 @@ function getLocation() {
         request.onreadystatechange = function(){
           if(request.readyState == 4 && request.status == 200){
             var data = JSON.parse(request.responseText);
-            var address = data.results[0];
+            address = data.results[0];
 			jQuery('#address').val(address.formatted_address);
           }
         };
