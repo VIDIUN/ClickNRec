@@ -11,10 +11,8 @@ function uploadChunk(ks ,fileData, finalChunk=0)
   {
     url+= '&resume=1';
   }
-  if(finalChunk)
-  {
-    url+='&finalChunk=1';
-  }
+  url+='&finalChunk='+finalChunk;
+  
   url+= '&resumeAt=' + resumeAt;
 
   console.log('uploadChunk function started');
