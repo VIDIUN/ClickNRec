@@ -290,7 +290,6 @@ var startMedia = function() {
         var videoObject = { width: { exact : res[0]} , height :{exact : res[1]}, facingMode: 'user'};
 
         var constraints = {
-            audio: true,
             video: {
                 facingMode: 'user'
             }
