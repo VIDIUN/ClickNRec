@@ -131,11 +131,13 @@
             if(document.getElementById("start-stop-button").textContent=='Start')
             {
                 document.getElementById("start-stop-button").textContent = 'Stop';
+		document.getElementById("start-stop-button").style.backgroundColor = '#FF0000';
                 StartRecordingQuestion(eventId,questionId);
             }
             else
             {
                 document.getElementById("start-stop-button").textContent = 'Start';
+		document.getElementById("start-stop-button").style.backgroundColor = '#4CAF50';
                 StopRecordingQuestion(eventId,questionId);
                 questionId++;            
             }
