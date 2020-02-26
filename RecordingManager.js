@@ -246,12 +246,12 @@ var startMedia = function() {
             var videoRecorder = RecordRTC(video.stream, options);
 
             // to sync audio/video playbacks in browser!
-            videoRecorder.initRecorder(function() {
+            /*videoRecorder.initRecorder(function() {
                 audioRecorder.initRecorder(function() {
-                /*    audioRecorder.startRecording();
-                    videoRecorder.startRecording();*/
+                    audioRecorder.startRecording();
+                    videoRecorder.startRecording();
                 });
-            });
+            });*/
             video.recordRTC.push(audioRecorder, videoRecorder);
             return;
         }
