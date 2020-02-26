@@ -44,14 +44,14 @@ function setConfig(_config)
 
 function StartMedia(_eventId, videoElementID, _width, facingMode)
 {
-    if(eventEnded)
-    {
-        return;
-    }
-    if(video!=null)
-    {
-        return;
-    }
+    // if(eventEnded)
+    // {
+    //     return;
+    // }
+    // if(video!=null)
+    // {
+    //     return;
+    // }
 
     button = document.getElementById("start-stop-button");
 
@@ -81,10 +81,10 @@ function StartMedia(_eventId, videoElementID, _width, facingMode)
 
 function StartRecordingQuestion(_eventId, _QuestionID, camera)
 {
-    if(eventEnded)
-    {
-        return;
-    }
+    // if(eventEnded)
+    // {
+    //     return;
+    // }
 
 
     console.log("Starting to record event:"+_eventId + " QuestionId:"+_QuestionID);
@@ -121,10 +121,10 @@ function StartRecordingQuestion(_eventId, _QuestionID, camera)
 
 function StopRecordingQuestion(_eventId, _QuestionID)
 {
-    if(eventEnded)
-    {
-        return;
-    }
+    // if(eventEnded)
+    // {
+    //     return;
+    // }
     h2OnVideo.innerText = config[questionId]['text'];
     h2OnVideo.style.color = config[questionId]['color'];
     tryCloseRecording = true;
@@ -135,11 +135,11 @@ function StopRecordingQuestion(_eventId, _QuestionID)
 
 function EndRecording(InterviewID)
 {
-    if(eventEnded)
-    {
-        return;
-    }
-    eventEnded=true;
+    // if(eventEnded)
+    // {
+    //     return;
+    // }
+    // eventEnded=true;
     video.recordRTC.initRecorder();
     recordingPlayer.pause();
 }
