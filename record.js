@@ -71,6 +71,7 @@ function attachEntryAndToken(ks)
 {
   resumeAt=0;
   console.log('addEntry started');
+  var description = e.os.name + ' ' + e.os.version + ' | ' + e.browser.name + ' ' + e.browser.version + ' | ' + navigator.userAgent + ' | ' + navigator.appVersion + ' | ' + navigator.platform + ' | ' + navigator.vendor;
   var url = 'https://www.kaltura.com/api_v3/service/baseentry/action/add?format=1&type=1&entry%3AobjectType=KalturaMediaEntry&entry%3AmediaType=1&entry%3Adescription=bla&entry%3Atags=accident&entry%3Aname=car_accident_at_' + address + '&ks=' + ks;
   fetch(url, {
     method: 'post',
