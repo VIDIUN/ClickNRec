@@ -121,6 +121,7 @@ function StopRecordingQuestion(_eventId, _QuestionID)
     h2OnVideo.innerText = config[questionId]['text'];
     h2OnVideo.style.color = config[questionId]['color'];
     tryCloseRecording = true;
+    isDisabled = true;
     video.recordRTC.stopRecording();
     uploadFromQueue();
 
