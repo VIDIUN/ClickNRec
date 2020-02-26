@@ -140,15 +140,15 @@ function uploadFromQueue(){
         {
             return;
         }
+
+
+
         var element = uploadQueue[0];
 
-        if(uploadQueue.length==1 && tryCloseRecording==1)
+        var finalChunk=0;
+        if(uploadQueue.length==1 && tryCloseRecording)
         {
             finalChunk=1;
-        }
-        else
-        {
-            finalChunk=0;
         }
 
         uploadToKaltura(element[0], element[1], finalChunk,function (progress) {
