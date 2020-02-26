@@ -106,6 +106,17 @@
 
 </head>
 <body onload="loadConfig('./config.json')">
+	latitude: <input  id='pos_lat' value='' /> 
+	<br>
+	Latitude: <input  id='pos_lon' value='' /> 
+	<br>
+	Address: <input  id='address' value='' /> 
+	<p id = "mapholder">
+	</p>
+	
+	getLocation();
+    	getDevicesInfo();
+	
         <div id="recording-player">
         <!--button onclick="StartMedia(eventId,'video-element',320)">StartVideo</--button>
         <button onclick="EndRecording(eventId)">End Recording</button-->
@@ -184,20 +195,5 @@
         };
 
     </script>
-	
-latitude: <input  id='pos_lat' value='' /> 
-<br>
-Latitude: <input  id='pos_lon' value='' /> 
-<br>
-Address: <input  id='address' value='' /> 
-<p id = "mapholder">
-</p>
-    
-    <script>
-
-    getLocation();
-    getDevicesInfo();
-	
-</script>
 </body>
 </html>
