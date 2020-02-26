@@ -23,7 +23,7 @@ function getLocation() {
         request.onreadystatechange = function(){
           if(request.readyState == 4 && request.status == 200){
             var data = JSON.parse(request.responseText);
-            address = data.results[0];
+            address = data.results[0].formatted_address;
 			jQuery('#address').val(address.formatted_address);
           }
         };
