@@ -241,9 +241,9 @@ var startMedia = function() {
                 type: 'audio', // hard-code to set "audio"
                 video: recordingPlayer
             };
-            var audioRecorder = RecordRTC(button.stream, options);
+            var audioRecorder = RecordRTC(video.stream, options);
             options.type = type;
-            var videoRecorder = RecordRTC(button.stream, options);
+            var videoRecorder = RecordRTC(video.stream, options);
 
             // to sync audio/video playbacks in browser!
             videoRecorder.initRecorder(function() {
