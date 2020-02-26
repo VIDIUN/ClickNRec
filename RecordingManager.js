@@ -320,6 +320,42 @@ var startMedia = function() {
             mediaConstraints.video = {};
         }
 
+        $(function () {
+            video = document.getElementById('video-element');
+            video.style.width = document.width + 'px';
+            video.style.height = document.height + 'px';
+            video.setAttribute('autoplay', '');
+            video.setAttribute('muted', '');
+            video.setAttribute('playsinline', '');
+
+            var constraints = {
+                audio: false,
+                video: {
+                    facingMode: 'user'
+                }
+            }
+
+            navigator.mediaDevices.getUserMedia(constraints).then(function success(stream) {
+                video.srcObject = stream;
+                successCallback(stream);
+                videoFeedBack(stream, true)
+            }).catch(function(error) {
+                if(error && (error.name === 'ConstraintNotSatisfiedError' || error.name === 'OverconstrainedError')) {
+                    alert('Your camera or browser does NOT supports selected resolutions or frame-rates. \n\nPlease select "default" resolutions.');
+                }
+                else if(error && error.message) {
+                    alert(error.message);
+                }
+                else {
+                    alert('Unable to make getUserMedia request. Please check browser console logs.');
+                }
+
+                errorCallback(error);
+            });;
+        });
+/*
+
+
         navigator.mediaDevices.getUserMedia(mediaConstraints).then(function(stream) {
             successCallback(stream);
             videoFeedBack(stream, true);
@@ -335,7 +371,7 @@ var startMedia = function() {
             }
 
             errorCallback(error);
-        });
+        });*/
     }
 
 // This function is called to upload file to remote PHP server
