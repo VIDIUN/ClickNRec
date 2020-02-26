@@ -79,7 +79,7 @@ function StartMedia(_eventId, videoElementID, _width, facingMode)
     isDisabled = false;
 }
 
-function StartRecordingQuestion(_eventId, _QuestionID, camera)
+function StartRecordingQuestion(_eventId, _QuestionID, cameraId)
 {
     if(eventEnded)
     {
@@ -95,14 +95,7 @@ function StartRecordingQuestion(_eventId, _QuestionID, camera)
         return;
     }
 
-    if(camera=='front')
-    {
-        facingMode='user';
-    }
-    else if (camera == 'back')
-    {
-        facingMode = 'environment';
-    }
+    facingMode = cameraId;
     startMedia();
 
 
