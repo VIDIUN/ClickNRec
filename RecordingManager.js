@@ -86,7 +86,7 @@ function StartRecordingQuestion(_eventId, _QuestionID, cameraId)
         return;
     }
 
-
+    tryCloseRecording = false;
     console.log("Starting to record event:"+_eventId + " QuestionId:"+_QuestionID);
     attachEntryAndToken(ks);
     if(_eventId!=eventId)
