@@ -136,12 +136,12 @@
                 {
                     cameraIndex=0;
                 }
-                else if (camera=='back' && cameras.length>0 )
+                else if (camera=='back' && cameras.length>1 )
                 {
                     cameraIndex=1;
                 }
 		
-		cameraId =  cameras[camreIndex];
+		cameraId =  cameras[cameraIndex];
                 document.getElementById("start-stop-button").textContent = 'Stop';
 		        document.getElementById("start-stop-button").style.backgroundColor = '#FF0000';
                 StartRecordingQuestion(eventId,questionId,cameraId);
