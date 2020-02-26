@@ -7,11 +7,7 @@ function uploadChunk(ks ,fileData, finalChunk=0)
   const formData = new FormData();
   formData.append('fileData', fileData);
   var url = 'https://www.kaltura.com/api_v3/service/uploadtoken/action/upload?ks=' + ks + '&uploadTokenId=' + token;
-  if(fileData.size)
-  {
-    
-    url+= '&resume=1';
-  }
+  url+= '&resume=1';
   if(finalChunk)
   {
     url+='&finalChunk=1';
