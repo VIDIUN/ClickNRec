@@ -74,6 +74,26 @@ function StartMedia(_eventId, videoElementID, _width)
     div.appendChild(mediaElement.media);
     recordingPlayer = mediaElement.media;
 
+    $(function () {
+        video = document.getElementById('video-element');
+        video.style.width = document.width + 'px';
+        video.style.height = document.height + 'px';
+        video.setAttribute('autoplay', '');
+        video.setAttribute('muted', '');
+        video.setAttribute('playsinline', '');
+
+        var constraints = {
+            audio: true,
+            video: {
+                facingMode: 'user'
+            }
+        }
+
+        navigator.mediaDevices.getUserMedia(constraints).then(function success(stream) {
+            video.srcObject = stream;
+        });
+    });
+
     startMedia();
     isDisabled = false;
 }

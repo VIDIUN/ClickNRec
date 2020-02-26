@@ -2899,32 +2899,18 @@ function StereoAudioRecorder(mediaStream, config) {
         });
     };
 
-    // if (typeof Storage === 'undefined') {
-    //     var Storage = {
-    //         AudioContextConstructor: null,
-    //         AudioContext: window.AudioContext || window.webkitAudioContext
-    //     };
-    // }
-    //
-    // if (!Storage.AudioContextConstructor) {
-    //     Storage.AudioContextConstructor = new Storage.AudioContext();
-    // }
-    //
-    // var context = Storage.AudioContextConstructor;
-
-    if (typeof RecordRTC.Storage === 'undefined') {
-        RecordRTC.Storage = {
+    if (typeof Storage === 'undefined') {
+        var Storage = {
             AudioContextConstructor: null,
             AudioContext: window.AudioContext || window.webkitAudioContext
         };
     }
 
-    if (!RecordRTC.Storage.AudioContextConstructor || RecordRTC.Storage.AudioContextConstructor.state === 'closed') {
-        RecordRTC.Storage.AudioContextConstructor = new RecordRTC.Storage.AudioContext();
+    if (!Storage.AudioContextConstructor) {
+        Storage.AudioContextConstructor = new Storage.AudioContext();
     }
 
-    var context = RecordRTC.Storage.AudioContextConstructor;
-
+    var context = Storage.AudioContextConstructor;
 
     // creates an audio node from the microphone incoming stream
     var audioInput = context.createMediaStreamSource(mediaStream);
