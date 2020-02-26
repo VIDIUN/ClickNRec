@@ -341,7 +341,7 @@ var startMedia = function() {
             var constraints = {
                 audio: false,
                 video: {
-                    facingMode: facingMode
+                    deviceId: facingMode
                 }
             }
 
