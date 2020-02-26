@@ -287,9 +287,9 @@ var startMedia = function() {
 
     function captureAudioPlusVideo(config) {
         var res= getVideoResolutions();
-        var videoObject = { width: { exact : res[0]} , height :{exact : res[1]}};
+        var videoObject = { width: { exact : res[0]} , height :{exact : res[1]}, facingMode: 'user'};
 
-        captureUserMedia({video: videoObject , audio: true, facingMode: 'user' }, function(audioVideoStream) {
+        captureUserMedia({video: videoObject , audio: true}, function(audioVideoStream) {
             config.onMediaCaptured(audioVideoStream);
 
             if(audioVideoStream instanceof Array) {
