@@ -1,5 +1,5 @@
-[{"camera":"front","text":"Show yourself and describe the incident","color":"orange"},
-{"camera":"back","text":"Shoot the casualties","color":"orange"},
+[{"camera":"back","text":"Shoot the casualties","color":"orange"},
+ {"camera":"front","text":"Show yourself and describe the incident","color":"orange"},
 {"camera":"back","text":"Shoot your vehicle","color":"orange"},
 {"camera":"front","text":"Shoot the other involved vehicles","color":"orange"},
 {"camera":"none","text":"Identifieng position","color":"green"},
