@@ -1,4 +1,4 @@
-
+/*
 function getDevicesInfo() {
 	console.log("getDevicesInfo1: ")
     'use strict';
@@ -89,3 +89,4 @@ function getDevicesInfo() {
 	jQuery('#navigator_vendor').val(navigator.vendor);
 	
 };
+*/
