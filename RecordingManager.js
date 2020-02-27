@@ -122,6 +122,7 @@ function StopRecordingQuestion(_eventId, _QuestionID)
     h2OnVideo.style.color = config[questionId]['color'];
     document.getElementById("start-stop-button").style.backgroundColor = 'grey';
     tryCloseRecording = true;
+    video.recordRTC.stopRecording();
 }
 
 function EndRecording(InterviewID)
