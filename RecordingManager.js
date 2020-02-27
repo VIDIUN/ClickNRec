@@ -161,6 +161,7 @@ function uploadFromQueue(){
             finalChunk=1;
             document.getElementById("start-stop-button").style.backgroundColor = '#4CAF50';
             tryCloseRecording=false;
+            uploadQIndex = 0;
         }
 
         uploadToKaltura(element[0], element[1], finalChunk,function (progress) {
