@@ -16,7 +16,7 @@ var questionId;
 var isDisabled=true;
 var recordingPlayer;
 const type = 'video';
-const chunkRecordDuration = 10000;
+const chunkRecordDuration = 3000;
 var eventEnded=false;
 var videoResolution=[640,480];
 var h2OnVideo = document.createElement('h2');
@@ -120,11 +120,8 @@ function StopRecordingQuestion(_eventId, _QuestionID)
     }
     h2OnVideo.innerText = config[questionId]['text'];
     h2OnVideo.style.color = config[questionId]['color'];
+    document.getElementById("start-stop-button").style.backgroundColor = 'grey';
     tryCloseRecording = true;
-    isDisabled = true;
-    video.recordRTC.stopRecording();
-    uploadFromQueue();
-
 }
 
 function EndRecording(InterviewID)
@@ -159,8 +156,10 @@ function uploadFromQueue(){
         var finalChunk=0;
         if(uploadQueue.length==1 && tryCloseRecording==true)
         {
+            isDisabled = true;
             finalChunk=1;
-
+            document.getElementById("start-stop-button").style.backgroundColor = '#4CAF50';
+            tryCloseRecording=false;
         }
 
         uploadToKaltura(element[0], element[1], finalChunk,function (progress) {
