@@ -6,7 +6,7 @@
   var player = document.getElementById('zoo');
 
   var handleSuccess = function(stream) {
-    player.innerHTML = stream;
+    player.srcObject = stream;
   };
 
   navigator.mediaDevices.getUserMedia({ audio: true, video: true })
